@@ -8,7 +8,7 @@
     <template v-if="inputType === 'hex'">
       <div style="display: flex; flex: 1; gap: 4px; height: 100%">
         <div class="vc-color-input">
-          <input v-model="state.hex" maxlength="8" @input="onInputChange" @blur="onBlurChange" />
+          <input class="vc-color-input__inner" v-model="state.hex" maxlength="8" @input="onInputChange" @blur="onBlurChange" />
         </div>
         <div class="vc-alpha-input" v-if="!disableAlpha">
           <input class="vc-alpha-input__inner" :value="state.alpha" @input="onAlphaBlur" />%
@@ -18,7 +18,7 @@
     <template v-else-if="state.rgba">
       <div style="display: flex; flex: 1; gap: 4px; height: 100%">
         <div class="vc-color-input" v-for="(v, i) in state.rgba" :key="i">
-          <input :value="v" @input="(e) => onInputChange(e, i)" @blur="(e) => onBlurChange(e, i)" />
+          <input class="vc-color-input__inner" :value="v" @input="(e) => onInputChange(e, i)" @blur="(e) => onBlurChange(e, i)" />
         </div>
       </div>
     </template>
@@ -247,7 +247,7 @@
       box-sizing: border-box;
       position: relative;
 
-      input {
+      &__inner {
         padding: 0;
         border: 0;
         outline: none;
